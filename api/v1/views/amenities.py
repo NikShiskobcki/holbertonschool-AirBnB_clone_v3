@@ -64,7 +64,7 @@ def update_amenity(amenity_id):
         abort(404)
     amenityInfo = request.get_json
     for key, value in amenityInfo.items():
-        if key not in ignore:
+        if key not in ignoredKeys:
             setattr(x, key, value)
     storage.save()
     return make_response(jsonify(x.to_dict()), 200)
