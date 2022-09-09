@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """index file"""
 from api.v1.views import app_views
-from flask import Flask
+from flask import jsonify
 
-@app_views.route('/status, strict_slashes=False')
+@app_views.route('/status')
 def status():
     """displays status"""
-    return('"status": "OK"'.json())
+    dic = {"status" : "OK"}
+    return jsonify(dic)
+    
