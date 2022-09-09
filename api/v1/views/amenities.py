@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""view for State objects that handles default RESTFul API actions"""
+"""view for Amenity objects that handles default RESTFul API actions"""
 
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
@@ -14,7 +14,7 @@ def retrieve_amenities():
     listAmenities = []
     for x in all:
         listAmenities.append(x.to_dict())
-    return jsonify(x)
+    return jsonify(listAmenities)
 
 
 @app_views.route('/amenities/<amenity_id>/',
@@ -62,9 +62,9 @@ def update_amenity(amenity_id):
     x = storage.get(Amenity, amenity_id)
     if not x:
         abort(404)
-    amenityInfo = request.get_json
+    amenityInfo = request.get_json()
     for key, value in amenityInfo.items():
-        if key not in ignore:
+        if key not in ignoredKeys:
             setattr(x, key, value)
     storage.save()
     return make_response(jsonify(x.to_dict()), 200)
