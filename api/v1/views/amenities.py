@@ -62,7 +62,7 @@ def update_amenity(amenity_id):
     x = storage.get(Amenity, amenity_id)
     if not x:
         abort(404)
-    amenityInfo = request.get_json
+    amenityInfo = request.get_json()
     for key, value in amenityInfo.items():
         if key not in ignoredKeys:
             setattr(x, key, value)
