@@ -18,9 +18,7 @@ def retrieve_places(city_id):
     city = storage.get(City, city_id)
     if not city:
         abort(404)
-    places = []
-    for place in city.places:
-        places.append(place.to_dict())
+    places = [place.to_dict() for place in city.places]
     return jsonify(places)
 
 
@@ -84,4 +82,3 @@ def update_place(place_id):
             setattr(x, key, value)
     storage.save()
     return make_response(jsonify(x.to_dict()), 200)
-
