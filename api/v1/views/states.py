@@ -60,6 +60,6 @@ def update_state(state_id):
     stateInfo = request.json
     for key, value in stateInfo.items():
         if key not in ignoredKeys:
-            setattr(state, key, value)
+            setattr(x, key, value)
     storage.save()
     return make_response(jsonify(x.to_dict()), 200)
