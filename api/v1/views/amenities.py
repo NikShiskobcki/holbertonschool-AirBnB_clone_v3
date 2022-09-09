@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""view for State objects that handles default RESTFul API actions"""
+"""view for Amenity objects that handles default RESTFul API actions"""
 
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
@@ -14,7 +14,7 @@ def retrieve_amenities():
     listAmenities = []
     for x in all:
         listAmenities.append(x.to_dict())
-    return jsonify(x)
+    return jsonify(listAmenities)
 
 
 @app_views.route('/amenities/<amenity_id>/',
