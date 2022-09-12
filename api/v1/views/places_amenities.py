@@ -13,7 +13,7 @@ from models.user import User
 
 @app_views.route('/places/<place_id>/amenities',
                  methods=['GET'], strict_slashes=False)
-def retrieve_amenities(place_id):
+def retrieve_amenities_in_place(place_id):
     """retrieves all ameni in place"""
     place = storage.get(Place, place_id)
     if not place:
@@ -24,7 +24,7 @@ def retrieve_amenities(place_id):
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',
                  methods=['DELETE'], strict_slashes=False)
-def delete_amenity(place_id, amenity_id):
+def delete_amenity_in_place(place_id, amenity_id):
     """deletes review"""
     x = storage.get(Amenity, amenity_id)
     if not x:
@@ -42,7 +42,7 @@ def delete_amenity(place_id, amenity_id):
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',
                  methods=['POST'], strict_slashes=False)
-def link_amenity(place_id, amenity_id):
+def link_amenity_to_place(place_id, amenity_id):
     """link amenity w/ place"""
     place = storage.get(Place, place_id)
     if not place:
