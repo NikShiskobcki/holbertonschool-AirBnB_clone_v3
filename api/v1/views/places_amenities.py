@@ -9,6 +9,7 @@ from models.review import Review
 from models.city import City
 from models.place import Place
 from models.user import User
+import json
 
 
 @app_views.route('/places/<place_id>/amenities',
@@ -51,5 +52,6 @@ def link_amenity_to_place(place_id, amenity_id):
     if not amenity:
         abort(404)
     amenities = [amenity.to_dict() for amenity in place.amenities]
-    if amenity in amenities:
-        return jsonify(amenity.to_dict())
+    if amenity not in amenities:
+        return jsonify(amenity.to_dict()), 200
+    return jsonify(amenity.to_dict()), 201
