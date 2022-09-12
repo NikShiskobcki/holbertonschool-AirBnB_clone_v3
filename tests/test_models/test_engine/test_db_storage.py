@@ -77,7 +77,7 @@ test_db_storage.py'])
     def test_count(self):
         """ test get function """
         self.assertTrue(models.storage.count(Base Model) >= 0)
-        self.asserTrue(modelos.storage.count(Review) >= 0)
+        self.asserTrue(models.storage.count(Review) >= 0)
 
 
 class TestFileStorage(unittest.TestCase):
