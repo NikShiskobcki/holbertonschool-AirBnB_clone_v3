@@ -37,7 +37,7 @@ def delete_amenity_in_place(place_id, amenity_id):
         return make_response(jsonify(x.to_dict()), 200)
     storage.delete(x)
     storage.save()
-    return make_response(jsonify({}), 200)
+    return jsonify({}), 200
 
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',
@@ -51,6 +51,5 @@ def link_amenity_to_place(place_id, amenity_id):
     if not amenity:
         abort(404)
     amenities = [amenity.to_dict() for amenity in place.amenities]
-    if amenity not in amenities:
-        return make_response(jsonify(amenity.to_dict()), 200)
-    return jsonify(amenity.to_dict())
+    if amenity in amenities:
+        return jsonify(amenity.to_dict())
