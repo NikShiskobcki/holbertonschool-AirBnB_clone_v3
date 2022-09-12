@@ -53,4 +53,4 @@ def link_amenity_to_place(place_id, amenity_id):
     amenities = [amenity.to_dict() for amenity in place.amenities]
     if amenity not in amenities:
         return make_response(jsonify(amenity.to_dict()), 200)
-    return make_response(jsonify(amenity.to_dict()), 201)
+    return jsonify(amenity.to_dict())
